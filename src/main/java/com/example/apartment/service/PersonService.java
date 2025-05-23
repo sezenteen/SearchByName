@@ -35,6 +35,8 @@ public class PersonService {
     public Person update(Long id, Person updatedPerson) {
         return personRepository.findById(id).map(person -> {
             person.setName(updatedPerson.getName());
+            person.setPhone(updatedPerson.getPhone());
+            person.setEmail(updatedPerson.getEmail());
             return personRepository.save(person);
         }).orElseThrow(() -> new RuntimeException("Person not found"));
     }
